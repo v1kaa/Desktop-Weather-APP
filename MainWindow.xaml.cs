@@ -75,9 +75,23 @@ namespace weather
                 humidity_label.Content="humidity: " + Info.main.humidity;
                 main_label.Content = "main: "+Info.weather[0].main;
                 description_label.Content = Info.weather[0].description;
-                sunrise_label.Content = "Sunrise at: " + DateTimeOffset.FromUnixTimeSeconds(Info.sys.sunrise).LocalDateTime.ToString("HH:mm");
-                sunset_label.Content="Sunset at: " + DateTimeOffset.FromUnixTimeSeconds(Info.sys.sunset).LocalDateTime.ToString("HH:mm");
-                double temperatureInKelvin = Info.main.temp;
+                    DateTimeOffset currentTime = DateTimeOffset.UtcNow;
+
+                    // Convert Unix timestamp to DateTime
+                    DateTime sunriseDateTime = DateTimeOffset.FromUnixTimeSeconds(Info.sys.sunrise).DateTime;
+                    DateTime sunsetDateTime = DateTimeOffset.FromUnixTimeSeconds(Info.sys.sunset).DateTime;
+
+                   
+                    // Get the time part (hours and minutes) of sunrise and sunset
+                    TimeSpan sunriseTime = sunriseDateTime.TimeOfDay;
+                    TimeSpan sunsetTime = sunsetDateTime.TimeOfDay;
+
+                    // Display only hours and minutes
+                    sunrise_label.Content = "Sunrise at: " + sunriseTime.ToString("hh':'mm");
+                    sunset_label.Content = "Sunset at: " + sunsetTime.ToString("hh':'mm");
+
+
+                    double temperatureInKelvin = Info.main.temp;
                 double temperatureInCelsius = temperatureInKelvin - 273.15;
 
                 temperature_label.Content = "Temperature: " + temperatureInCelsius.ToString("0.##") + "°C";
