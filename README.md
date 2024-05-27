@@ -10,6 +10,6 @@ This project is a desktop application that allows users to check the weather con
 - OpenWeatherMap API for fetching weather data
 - WPF for building the user interface
 
-  ![weather_app](https://github.com/v1kaa/Desktop-Weather-APP/assets/108978479/55b60a8d-9c12-41ca-94dd-9dc33a3b149d)
+![weather_app](https://github.com/v1kaa/Desktop-Weather-APP/assets/108978479/8c7b6c18-5da2-4a1a-8472-d8e71e98d686)
 
   
